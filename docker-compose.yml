@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+    helm-repository:
+        build:
+            context: .
+        container_name: helm-repository
+        image: semhoun/helm-repository:${HELMREPOSITORY_VERSION}
+        volumes:
+            - ./www/:/www/
+        environment:
+        - HELM_REPOSITORY_NAME=e-dune
+        - HELM_REPOSITORY_URL=https://helm.dev.e-dune.info
+        ports:
+            - 8091:80
